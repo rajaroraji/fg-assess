@@ -1,57 +1,62 @@
 # fg-assess Terraform Project
 
 ## Introduction
+
 Welcome to the `fg-assess` Terraform project. This repository contains Terraform code for setting up AWS network infrastructure, including VPCs, subnets, security groups, and more.
 
 ## Prerequisites
+
 Before you begin, ensure you have met the following requirements:
-- Terraform installed (preferably version [specify version])
+
+- Terraform installed (preferably version 0.12.26 or later)
 - AWS CLI installed and configured
 - AWS account with necessary permissions
 
 ## Installation
-Clone the repository and navigate to the project directory:
-```bash
+
+1. Clone the repository and navigate to the project directory:
+
+bash
 git clone https://github.com/rajaroraji/fg-assess.git
 cd fg-assess
 
-Configuration
-Configure the Terraform code by setting up necessary variables in vars/dev.tfvars and backend configuration in backend/dev/vpc.tfvars.
 
+2. Configure the Terraform code by setting up necessary variables in `vars/dev.tfvars` and backend configuration in `backend/dev/vpc.tfvars`.
 
+## Usage
 
-Usage
-To use the Terraform code, follow these steps:
+1. Initialize Terraform:
 
-Initialize Terraform:
-
-bash
-Copy code
+```
 terraform init -backend-config=backend/dev/vpc.tfvars
-Review the plan:
+```
 
-bash
-Copy code
+2. Review the plan:
+
+```
 terraform plan -var-file=vars/dev.tfvars
-Apply the configuration:
+```
 
-bash
-Copy code
+3. Apply the configuration:
+
+```
 terraform apply -var-file=vars/dev.tfvars
+```
 
-Modules
+## Modules
+
 The project is structured into multiple modules for better management and reusability. These modules include:
 
-VPC (modules/network/vpc)
-Subnets (modules/network/subnet)
-Security Groups (modules/network/sg)
+- VPC (`modules/network/vpc`)
+- Subnets (`modules/network/subnet`)
+- Security Groups (`modules/network/sg`)
 
+## Contributing
 
-Contributing
 Contributions to the fg-assess project are welcome! Here's how you can contribute:
 
-Fork the repository.
-Create a new branch (git checkout -b feature-branch).
-Make your changes and commit them (git commit -am 'Add some feature').
-Push to the branch (git push origin feature-branch).
-Create a new Pull Request.
+1. Fork the repository.
+2. Create a new branch (e.g., `git checkout -b feature-branch`).
+3. Make your changes and commit them (e.g., `git commit -am 'Add some feature'`).
+4. Push to the branch (e.g., `git push origin feature-branch`).
+5. Create a new Pull Request.
