@@ -27,21 +27,21 @@ cd fg-assess
 
 1. Initialize Terraform:
 
-bash
+```
 terraform init -backend-config=backend/dev/vpc.tfvars
 ```
 
 2. Review the plan:
 
-```bash
+```
 terraform plan -var-file=vars/dev.tfvars
 ```
 
 3. Apply the configuration:
 
-```bash
+```
 terraform apply -var-file=vars/dev.tfvars
-
+```
 
 ## Modules
 
