@@ -1,0 +1,14 @@
+variable "alb_name" {}
+variable "alb_certificate_arn" {}
+variable "alb_enable_deletion_protection" {}
+variable "alb_idle_timeout" {}
+variable "alb_enable_http2" {}
+variable "alb_ingress_cidr_blocks" {}
+variable "alb_egress_cidr_blocks" {}
+variable "alb_target_group_name" {}
+variable "alb_target_group_port" {}
+variable "alb_target_group_protocol" {}
+variable "alb_target_group_health_check" {}
+variable "alb_forward_rule_host_header" {}
+variable "alb_forward_rule_priority" {}
+variable "alb_region" {}
