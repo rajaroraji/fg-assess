@@ -11,9 +11,9 @@ Before you begin, ensure you have met the following requirements:
 
 ## Installation
 Clone the repository and navigate to the project directory:
-```bash
-git clone https://github.com/rajaroraji/fg-assess.git
-cd fg-assess
+
+'''git clone https://github.com/rajaroraji/fg-assess.git
+cd fg-assess '''
 
 Configuration
 Configure the Terraform code by setting up necessary variables in vars/dev.tfvars and backend configuration in backend/dev/vpc.tfvars.
