@@ -1,0 +1,29 @@
+# Ignore Terraform state files and directories
+*.tfstate
+*.tfstate.*
+terraform.tfstate.d
+
+# Ignore any .tfvars files containing sensitive information
+*.auto.tfvars
+*.auto.tfvars.json
+*.tfvars
+
+# Ignore .terraform directory which contains downloaded provider binaries
+.terraform/
+
+# Ignore .tfplan files
+*.tfplan
+
+# Ignore any log files
+*.log
+
+# Ignore any .DS_Store files on macOS
+.DS_Store
+
+# Ignore any temporary files or directories
+*.bak
+*.swp
+*~
+
+# Add any other files or directories you want to ignore below this line
+

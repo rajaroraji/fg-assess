@@ -1,0 +1,4 @@
+module "GuardDuty" {
+  source = "../../modules/security"
+  aws_guardduty_enabler = true
+}
