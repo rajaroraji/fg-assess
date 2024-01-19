@@ -1,12 +1,9 @@
 name: Terraform CI/CD
 
 on:
-  push:
-    branches:
-      - '*'
   pull_request:
     branches:
-      - '*'
+      - master
 
 jobs:
   terraform:
@@ -18,10 +15,11 @@ jobs:
     strategy:
       matrix:
         directory:
-          - alb
+          - vpc
+          - eks
           - ec2
-          - network
-          - rds
+          - security
+          - cloudwatch
 
     steps:
     - name: Checkout Repository
@@ -31,15 +29,17 @@ jobs:
       uses: hashicorp/setup-terraform@v1
 
     - name: Terraform Init
+      description: Initialize Terraform for the selected directory
       run: terraform init -backend-config=../../backend/dev/${{ matrix.directory }}.tfvars
-      working-directory: ./terraform/orchestration/${{ matrix.directory }}
+      working-directory: ./orchestration/${{ matrix.directory }}
 
     - name: Terraform Plan
+      description: Generate Terraform plan for the selected directory
       run: terraform plan -var-file=../../../vars/dev.tfvars
-      working-directory: ./terraform/orchestration/${{ matrix.directory }}
+      working-directory: ./orchestration/${{ matrix.directory }}
 
     - name: Terraform Apply
-      if: github.ref == 'refs/heads/master'
+      description: Apply Terraform changes for the selected directory
       run: terraform apply -auto-approve -var-file=../../../vars/dev.tfvars
-      working-directory: ./terraform/orchestration/${{ matrix.directory }}
+      working-directory: ./orchestration/${{ matrix.directory }}
       continue-on-error: true

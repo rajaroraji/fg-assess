@@ -1,0 +1,38 @@
+name: Convert CSV to YAML
+
+on:
+  workflow_dispatch:
+    inputs:
+      csvFileName:
+        description: 'CSV file name (e.g., input.csv)'
+        required: true
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # Change to your preferred Python version
+
+    - name: Install dependencies
+      run: pip install pyyaml
+
+    - name: Run Python script
+      env:
+        INPUT_CSV_FILE: ${{ github.event.inputs.csvFileName }}
+      run: python ./convert_csv_to_yaml.py
+
+    - name: Move output.yaml
+      run: mv output.yaml ./terraform/vars/temp/output.yaml
+
+    - name: Upload output.yaml as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: converted-yaml
+        path: ./terraform/vars/temp/output.yaml
